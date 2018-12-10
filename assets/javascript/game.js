@@ -79,22 +79,27 @@ $(document).ready(function() {
         askQuestion();
     }
 
-    function decrement() {
-        time--;
-    }
-
     function timer() {
-        if (userInput = true) {
-            clearInterval(intervalId)
-        }
-        else if (time === 0) {
+        $("#timerPlaceholder").html(time);
+        if (time === "0") {
             userInput = true;
-            clearInterval(intervalId)
+            clearInterval(intervalId);
             showAnswer()
         }
+
+        else if (userInput === true) {
+            clearInterval(intervalId);
+        }
+        
         else {
+            clearInterval(intervalId);
             intervalId = setInterval(decrement,1000);
         }
+    }
+
+    function decrement() {
+        time--;
+        $("#timerPlaceholder").html(time);
     }
 
     function showAnswer() {
@@ -102,16 +107,18 @@ $(document).ready(function() {
     }
     
     function askQuestion() {
+        userInput = false;
         time = 10;
-        timer()
+        intervalId = setInterval(decrement,1000);
+        timer()                
+        $("#option1").show()
+        $("#option2").show()
+        $("#option3").show()
+        $("#option4").show()
         correctAnswer = questions[questionsLeft].correct;
         question = questions[questionsLeft].question;
         $("#questionBank").html(question);
             for (var i = 0; i < 4; i++) {
-                $("#option1").show()
-                $("#option2").show()
-                $("#option3").show()
-                $("#option4").show()
                 $("answerBank").append(questions[questionsLeft].choices[i]);
             }
         }})

@@ -51,9 +51,14 @@ body {
 }
 
 #answerBank {
-    color: white
+    color: goldenrod;
 }
 
 #questionBank {
     color: goldenrod;
+}
+
+#timerPlaceholder {
+    color: rgb(26, 128, 0);
+    font-size: 96px
 }
