@@ -76,12 +76,13 @@ $(document).ready(function() {
     function startGame(){
         $("#begin").hide();
         $("#upperTextbox").hide();
+        $("#timerPlaceholder").html(time);
         askQuestion();
     }
 
     function timer() {
-        $("#timerPlaceholder").html(time);
-        if (time === "0") {
+        
+        if (time === 0) {
             userInput = true;
             clearInterval(intervalId);
             showAnswer()
@@ -100,6 +101,9 @@ $(document).ready(function() {
     function decrement() {
         time--;
         $("#timerPlaceholder").html(time);
+        if (time === 0) {
+            clearInterval(intervalId);
+        }
     }
 
     function showAnswer() {
@@ -110,15 +114,31 @@ $(document).ready(function() {
         userInput = false;
         time = 10;
         intervalId = setInterval(decrement,1000);
-        timer()                
+
+        timer()    
+
         $("#option1").show()
         $("#option2").show()
         $("#option3").show()
         $("#option4").show()
+
         correctAnswer = questions[questionsLeft].correct;
         question = questions[questionsLeft].question;
+        // choices = questions[questionsLeft].choices[i];
+        // for (var i = 0; i < 4; i++);
+        //     $(".radio").html(questions[questionsLeft].choices[i])
+
         $("#questionBank").html(question);
-            for (var i = 0; i < 4; i++) {
-                $("answerBank").append(questions[questionsLeft].choices[i]);
-            }
-        }})
+
+        for (var i = 0; i < 4; i++) {
+            var choices = questions[questionsLeft].choices[i];
+            $(".radio").append(choices[i]);
+
+        // $("#answerBank").html(choices[i])
+        // $("#option1").html(questions[questionsLeft].choices[0]).attr("value", questions[questionsLeft].choices[0]);
+        // $("#option2").html(questions[questionsLeft].choices[1]).attr("value", questions[questionsLeft].choices[1]);
+        // $("#option3").html(questions[questionsLeft].choices[2]).attr("value", questions[questionsLeft].choices[2]);
+        // $("#option4").html(questions[questionsLeft].choices[3]).attr("value", questions[questionsLeft].choices[3]);
+        // $("answerBank").html(questions[questionsLeft].choices[i]);
+          
+        }}})
