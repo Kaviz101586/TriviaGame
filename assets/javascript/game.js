@@ -2,7 +2,7 @@ var startButton;
 var time;
 var intervalId;
 var askQuestion;
-var questionsLeft = 0;
+var questionsLeft = 10;
 var userInput = false;
 var showAnswer;
 var selectAnswer;
@@ -14,60 +14,56 @@ var questions = [
     {
         question: "What year did Dolores Umbridge teach Harry at Hogwarts?",
         choices: ["4","5","6","7"],
-        correct: 2
+        correct: "5"
     },
     {
         question: "What House was Susan Bones sorted into?",
         choices: ["Gryffindor","Slytherin","Hufflepuff","Ravenclaw"],
-        correct: 3
+        correct: "Hufflepuff"
     },
     {
         question: "What shape does Remus take each month?",
         choices: ["Rabbit","Dog","Werewolf","Stag"],
-        correct: 3
+        correct: "Werewolf"
     },
     {
         question: "How many members are there in Ron's immediate family?",
         choices: ["7","8","9","10"],
-        correct: 3
+        correct: "9"
     },
     {
         question: "In The Half-Blood Prince, who did Harry set to spy on Draco Malfoy?",
         choices: ["Dean and Seamus","Neville and Trevor","Bill and Fleur","Dobby and Kreacher"],
-        correct: 4
+        correct: "Dobby and Kreacher"
     },
     {
         question: "How did Moaning Myrtle die?",
         choices: ["Was eaten","Sword fight","Looked at a monster","Ate a monster"],
-        correct: 3
+        correct: "Looked at a monster"
     },
     {
         question: "Hedwig is a...",
         choices: ["dog","owl","cat","toad"],
-        correct: 2
+        correct: "owl"
     },
     {
         question: "How many positions per side are there in Quidditch?",
         choices: ["2","5","7","11"],
-        correct: 3
+        correct: "7"
     },
     {
         question: "What is Dumbledore's full name?",
         choices: ["Albus Percival Wulfric Brian Dumbledore","Albus Wulfric Percival Brand Dumbledore","Albus Dumbledore","Gellert Grindlewald"],
-        correct: 1
+        correct: "Albus Percival Wulfric Brian Dumbledore"
     },
     {
         question: "What is the name of the author of 'Magical Me'?",
         choices: ["Flitwick","Sprout","Lockhart","Brown"],
-        correct: 3
+        correct: "Lockhart"
     }
 ];
 
 $(document).ready(function() {
-    $("#option1").hide()
-    $("#option2").hide()
-    $("#option3").hide()
-    $("#option4").hide()
 
     $("#begin").click(function() {
         startGame()
@@ -77,68 +73,146 @@ $(document).ready(function() {
         $("#begin").hide();
         $("#upperTextbox").hide();
         $("#timerPlaceholder").html(time);
+        $(".h1").hide();
+        $("#submitAnswer").hide();
         askQuestion();
     }
 
-    function timer() {
+//     function timer() {
         
-        if (time === 0) {
-            userInput = true;
-            clearInterval(intervalId);
-            showAnswer()
-        }
+//         if (time === 0) {
+//             userInput = true;
+//             clearInterval(intervalId);
+//             showAnswer()
+//         }
 
-        else if (userInput === true) {
-            clearInterval(intervalId);
-        }
+//         else if (userInput === true) {
+//             clearInterval(intervalId);
+//         }
         
-        else {
-            clearInterval(intervalId);
-            intervalId = setInterval(decrement,1000);
-        }
-    }
+//         else {
+//             clearInterval(intervalId);
+//             intervalId = setInterval(decrement,1000);
+//         }
+//     }
 
-    function decrement() {
-        time--;
-        $("#timerPlaceholder").html(time);
-        if (time === 0) {
-            clearInterval(intervalId);
-        }
-    }
+//     function decrement() {
+//         time--;
+//         $("#timerPlaceholder").html(time);
+//         if (time === 0) {
+//             clearInterval(intervalId);
+//         }
+//     }
 
-    function showAnswer() {
-        $("#answerBank").html(questions[questionsLeft].choices[correct])
-    }
+//     function showAnswer() {
+//         $("#answerBank").html(questions[questionsLeft].choices[correct])
+//     }
     
-    function askQuestion() {
-        userInput = false;
-        time = 10;
-        intervalId = setInterval(decrement,1000);
+//     function askQuestion() {
+//         userInput = false;
+//         time = 10;
+//         intervalId = setInterval(decrement,1000);
 
-        timer()    
+//         timer()    
 
-        $("#option1").show()
-        $("#option2").show()
-        $("#option3").show()
-        $("#option4").show()
+//         $("#option1").show()
+//         $("#option2").show()
+//         $("#option3").show()
+//         $("#option4").show()
 
-        correctAnswer = questions[questionsLeft].correct;
-        question = questions[questionsLeft].question;
-        // choices = questions[questionsLeft].choices[i];
-        // for (var i = 0; i < 4; i++);
-        //     $(".radio").html(questions[questionsLeft].choices[i])
+//         correctAnswer = questions[questionsLeft].correct;
+//         question = questions[questionsLeft].question;
+//         // choices = questions[questionsLeft].choices[i];
+//         // for (var i = 0; i < 4; i++);
+//         //     $(".radio").html(questions[questionsLeft].choices[i])
 
-        $("#questionBank").html(question);
+//         $("#questionBank").html(question);
 
-        for (var i = 0; i < 4; i++) {
-            var choices = questions[questionsLeft].choices[i];
-            $(".radio").append(choices[i]);
+//         for (var i = 0; i < 4; i++) {
+//             var choices = questions[questionsLeft].choices[i];
+//             console.log(choices);
+//             // $(".radio").append(choices[i]);
+//             $("form").append("<div class= 'radio' id='option"+i + "'>" +
+//                              "<label> <input type='radio' name='group' value="
+//                              + questions[questionsLeft].choices[i] + "> &nbsp;&nbsp;"
+//                              + questions[questionsLeft].choices[i] + "</label></div>");
+ 
+//         }
+//     }
+//  })
 
-        // $("#answerBank").html(choices[i])
-        // $("#option1").html(questions[questionsLeft].choices[0]).attr("value", questions[questionsLeft].choices[0]);
-        // $("#option2").html(questions[questionsLeft].choices[1]).attr("value", questions[questionsLeft].choices[1]);
-        // $("#option3").html(questions[questionsLeft].choices[2]).attr("value", questions[questionsLeft].choices[2]);
-        // $("#option4").html(questions[questionsLeft].choices[3]).attr("value", questions[questionsLeft].choices[3]);
-        // $("answerBank").html(questions[questionsLeft].choices[i]);
-          
-        }}})
+
+/*
+start game button is cliked, this triggers start game function
+  start game function triggered
+  game set up
+game asks questions as long as there are still questions to ask / if questions left is not 0
+  if the user runs out of timeout
+    correct answer appears
+
+    next question is asked (if there are questions left)
+  or else the user answer the quetsion
+    if answer is correct
+      tell player they got it right
+    else answer is wrong
+      tell player they got it wrong
+    correct answer is shown
+    next question is asked (if there are questions left)
+
+
+        */
+
+
+
+  
+  function ask() {
+    console.log('asking');
+  
+    var outerDiv = $('<div class="outerDiv"></div>')
+    for(let i=0; i < questions.length; i++) {
+      var question = '<h1>' + questions[i].question + '</h1>';
+      var form = $("<form></form>");
+      var submitButton = $('<div><button id="submitAnswer" data-correct="' + questions[i].correct +'" type="submit">Submit</button></div>')
+      var innerDiv = $('<div class="innerDiv"></div>');
+      for(let j = 0; j < questions[i].choices.length; j++) {
+  
+        var option = $('<input type="radio" id="contactChoice"' + j + '"name="contact" value="'+ questions[i].choices[j] + '"><label for="contactChoice'+j+'">'+questions[i].choices[j]+'</label><br>');
+  
+        innerDiv.append(option);
+      }
+      form.append(innerDiv).append(submitButton)
+    }
+  
+    outerDiv.append(question).append(form)
+    $('#questionBank').append(outerDiv)
+  }
+  
+  function checkAnswer() {
+    console.log('check answer');
+  }
+  
+  function showAnswer(correctAnswer) {
+    var correctAnswer = correctAnswer;
+    console.log('correctAnswer', correctAnswer);
+  
+    $('#questionBank').hide();
+    $('#answerBank').append('<h1>'+correctAnswer+'</h1>')
+  }
+
+  for (var i = 0; i < questions.length; i++) {
+    ask(); 
+  
+  }
+  $(document).ready(function() {
+    $('#questionBank').on('click', '#submitAnswer', function() {
+      event.preventDefault()
+  
+      //check answer
+      checkAnswer();
+      //show answer
+  
+      var correctAnswer = $(this)[0].dataset.correct;
+      showAnswer(correctAnswer);
+  
+    });
+  })})
