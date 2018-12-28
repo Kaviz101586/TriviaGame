@@ -27,6 +27,7 @@ body {
 #upperTextbox {
     color: green;
     font-size: 20px;
+    margin-top: 60px;
 }
 
 .row {
@@ -59,6 +60,7 @@ body {
 }
 
 #timerPlaceholder {
+    margin-top: 220px;
     color: rgb(26, 128, 0);
     font-size: 96px
 }

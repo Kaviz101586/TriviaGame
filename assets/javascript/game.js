@@ -70,39 +70,39 @@ $(document).ready(function() {
     })
      
     function startGame(){
-        $("#begin").hide();
-        $("#upperTextbox").hide();
+        $("#begin").remove();
+        $("#upperTextbox").remove();
         $("#timerPlaceholder").html(time);
-        $(".h1").hide();
-        $("#submitAnswer").hide();
+        $(".h1").remove();
+        $("#submitAnswer").remove();
         askQuestion();
     }
 
-//     function timer() {
+    // function timer() {
         
-//         if (time === 0) {
-//             userInput = true;
-//             clearInterval(intervalId);
-//             showAnswer()
-//         }
+    //     if (time === 0) {
+    //         userInput = true;
+    //         clearInterval(intervalId);
+    //         showAnswer()
+    //     }
 
-//         else if (userInput === true) {
-//             clearInterval(intervalId);
-//         }
+    //     else if (userInput === true) {
+    //         clearInterval(intervalId);
+    //     }
         
-//         else {
-//             clearInterval(intervalId);
-//             intervalId = setInterval(decrement,1000);
-//         }
-//     }
+    //     else {
+    //         clearInterval(intervalId);
+    //         intervalId = setInterval(decrement,1000);
+    //     }
+    // }
 
-//     function decrement() {
-//         time--;
-//         $("#timerPlaceholder").html(time);
-//         if (time === 0) {
-//             clearInterval(intervalId);
-//         }
-//     }
+    // function decrement() {
+    //     time--;
+    //     $("#timerPlaceholder").html(time);
+    //     if (time === 0) {
+    //         clearInterval(intervalId);
+    //     }
+    // }
 
 //     function showAnswer() {
 //         $("#answerBank").html(questions[questionsLeft].choices[correct])
