@@ -19,14 +19,14 @@ body {
 
 #top {
     color: goldenrod;
-    font-size: 60px;
+    font-size: 90px;
     margin: 10px;
     font-family: "Harry Potter"
 }
 
 #upperTextbox {
     color: green;
-    font-size: 20px;
+    font-size: 60px;
     margin-top: 60px;
 }
 
@@ -53,14 +53,44 @@ body {
 
 #answerBank {
     color: goldenrod;
+    font-size: 36px;
 }
 
 #questionBank {
     color: goldenrod;
+    font-size: 72px;
 }
 
 #timerPlaceholder {
-    margin-top: 220px;
+    margin-top: 200px;
     color: rgb(26, 128, 0);
     font-size: 96px
+}
+
+.choice-button {
+    background-color:orangered;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: "Harry Potter";
+}
+
+#reset {
+    background-color:goldenrod;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: "Harry Potter";
 }
